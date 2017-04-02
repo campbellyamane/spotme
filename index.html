@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>Spot Me</title>
+		<link href="css/index.css" type="text/css" rel="stylesheet"/>
+		<link rel="icon" type="image/ico" href="favicon.ico"/>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/typeahead.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$("#home").click(function(){
+					window.location = "php/authorize.php"
+				}); 
+			});
+		</script>
+	</head>
+	<body>
+		<div id="home">
+			<span id="tagline">Click to Find Your Playlist</span>
+		</div>		
+	</body>
+</html>

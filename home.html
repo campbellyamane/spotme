@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Spot Me</title>
+		<link href="css/home.css" type="text/css" rel="stylesheet"/>
+		<link rel="icon" type="image/ico" href="favicon.ico"/>
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript">				
+			$(document).ready(function(){		
+				$.ajax({
+					type: "GET",
+					url: "php/search.php",
+					data:{code:code}, 
+					success: function(data){
+						 alert('fun');
+					},
+					error: function(data) { 
+						alert('nope'); 
+					}	 
+				})
+				$('#search input[type="text"]').on("keyup input", function(){
+					/* Get input value on change */
+					var inputVal = $(this).val();
+					var resultDropdown = $(this).siblings(".result");
+					var keycode = (event.keyCode ? event.keyCode : event.which);
+					if(keycode == '13'){
+						$.get("php/search.php", {term: inputVal}).done(function(data){
+							// Display the returned data in browser
+							resultDropdown.html(data);
+						});
+					} else{
+						resultDropdown.empty();
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="home">
+		</div>
+		<div id="header">
+			<h1>Spot Me</h1>
+		</div>
+		<div id="search">
+			<input class="searchbox" name="input" autofocus="autofocus" type="text" placeholder="Enter Song Name"/>
+			<div class="result"></div>
+		</div>
+	</body>
+</html>
