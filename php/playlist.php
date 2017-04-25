@@ -37,8 +37,10 @@
 						'seed_tracks' => [$song], 'limit' => 50, 'danceability' => [$danceability], 'energy' => [$energy],
 						'loudness' => [$loudness],
 					]);
-					
-					$playlists = $api->getMyPlaylists();
+				
+					$playlists = $api->getUserPlaylists($me, [
+                                            'limit' => 5
+                                        ]);
 					$myPlaylist = $playlists -> items[0] -> id;
 					$cutoff = count($recommendations -> tracks);
 					
